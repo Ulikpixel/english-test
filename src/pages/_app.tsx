@@ -5,8 +5,13 @@ import '@/styles/tailwind.css'
 import { API_TOKEN_STORYBLOK } from '@/config'
 // @ts-ignore
 import { apiPlugin, storyblokInit } from '@storyblok/react/rsc'
+import Title from '@/components/Example/Title'
+import Content from '@/components/Example/Content'
 
-const components = {}
+const components = {
+  title: Title,
+  content: Content,
+}
 
 storyblokInit({
   accessToken: API_TOKEN_STORYBLOK,

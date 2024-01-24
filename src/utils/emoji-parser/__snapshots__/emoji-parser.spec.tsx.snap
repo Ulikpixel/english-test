@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`insertEmojis should handle an array of ReactNodes as input 1`] = `
+<div>
+  Hello 
+  <span
+    class="inline-block relative top-1"
+  />
+  , how are you 
+  <span
+    class="inline-block relative top-1"
+  />
+  ?
+</div>
+`;
+
+exports[`insertEmojis should handle an empty string as input 1`] = `<div />`;
+
+exports[`insertEmojis should replace emojis in a string with corresponding React components 1`] = `
+<div>
+  Hello 
+  <span
+    class="inline-block relative top-1"
+  />
+  , how are you 
+  <span
+    class="inline-block relative top-1"
+  />
+  ?
+</div>
+`;

@@ -5,11 +5,12 @@ import { API_TOKEN_STORYBLOK, PREVIEW_TOKEN_STORYBLOK } from '@/config'
 import { Params, apiGet, getLinksStoryblok } from '@/utils/api'
 import { ISbStoryData } from '@storyblok/react'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
-import React, { useMemo } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import StoryblokProvider from '@/components/Storyblok/StoryblokProvider'
 import { LanguageType } from '@/types/language-types'
 import { SlugContext, SlugContextProps } from '@/config/slugContext'
 import { SlugProps } from '@/types/slug-types'
+import { usePathname } from 'next/navigation'
 
 const linksParser = (data: InfoSlugListResponse): InfoSlug[] =>
   Object.values(data.links || []) // Object<Object> парсим в array
@@ -69,6 +70,7 @@ export const getStaticProps: GetStaticProps = async ({ params, locale = 'en', pr
 
 const Slug: NextPage<SlugProps> = ({ story, links, slug }) => {
   const contextValue = useMemo<SlugContextProps>(() => ({ links: linksParser(links), slug }), [links])
+  const pathname = usePathname()
 
   if (story === null) {
     return (
@@ -80,6 +82,7 @@ const Slug: NextPage<SlugProps> = ({ story, links, slug }) => {
 
   return (
     <SlugContext.Provider value={contextValue}>
+      {pathname}
       <StoryblokProvider story={story} />
     </SlugContext.Provider>
   )

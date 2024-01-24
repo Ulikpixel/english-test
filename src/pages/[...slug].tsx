@@ -5,7 +5,7 @@ import { API_TOKEN_STORYBLOK, PREVIEW_TOKEN_STORYBLOK } from '@/config'
 import { Params, apiGet, getLinksStoryblok } from '@/utils/api'
 import { ISbStoryData } from '@storyblok/react'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
-import React, { useEffect, useMemo } from 'react'
+import React, { useMemo } from 'react'
 import StoryblokProvider from '@/components/Storyblok/StoryblokProvider'
 import { LanguageType } from '@/types/language-types'
 import { SlugContext, SlugContextProps } from '@/config/slugContext'
@@ -82,7 +82,7 @@ const Slug: NextPage<SlugProps> = ({ story, links, slug }) => {
 
   return (
     <SlugContext.Provider value={contextValue}>
-      {pathname}
+      Page: {pathname}
       <StoryblokProvider story={story} />
     </SlugContext.Provider>
   )
